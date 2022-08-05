@@ -21,7 +21,7 @@ chgrp GRP_SEC /sec
 
 # adicionando contas
 
-useradd -m -s /bin/bash carlos -G GRP_ADM
+useradd -m -s /bin/bash carlos -G GRP_ADM #testar aqui
 
 useradd -m -s /bin/bash maria
 usermod -a -G GRP_ADM maria
