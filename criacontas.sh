@@ -1,5 +1,6 @@
 #! /bin/bash
 
+
 # adicionando diretórios e alterando permissões
 
 mkdir /publico /adm /ven /sec
