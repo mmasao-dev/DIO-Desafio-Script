@@ -1,16 +1,13 @@
 #! /bin/bash
 
 
-# adicionando diretórios e alterando permissões
+echo " adicionando diretórios e alterando permissões "
 
 mkdir /publico /adm /ven /sec
 
-chmod 777 /publico
-chmod 770 /adm
-chmod 770 /ven
-chmod 770 /sec
 
-# adicionar Grupos e atribuindo diretório
+
+echo " adicionar Grupos e atribuindo diretório" 
 
 groupadd GRP_ADM
 groupadd GRP_VEN
@@ -20,31 +17,33 @@ chgrp GRP_ADM /adm
 chgrp GRP_VEN /ven
 chgrp GRP_SEC /sec
 
-# adicionando contas
+echo " adicionando contas" 
 
-useradd -m -s /bin/bash carlos -G GRP_ADM #testar aqui
+useradd carlos -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+useradd maria -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
+useradd joao -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_ADM
 
-useradd -m -s /bin/bash maria
-usermod -a -G GRP_ADM maria
+useradd debora -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_VEN
+useradd sebastiana -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_VEN
+useradd roberto -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_VEN
 
-useradd -m -s /bin/bash joao_
-usermod -a -G GRP_ADM joao_
+useradd josefina -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_SEC
+useradd amanda -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_SEC
+useradd rogerio -m -s /bin/bash -p $(openssl passwd -crypt Senha123) -G GRP_SEC
 
-useradd -m -s /bin/bash debora
-usermod -a -G GRP_VEN debora
+echo "Permissões de direório"
 
-useradd -m -s /bin/bash sebastiana
-usermod -a -G GRP_VEN sebastiana
+chown root:GRP_ADM /adm
+chown root:GRP_VEN /ven
+chown root:GRP_SEC /sec
 
-useradd -m -s /bin/bash roberto
-usermod -a -G GRP_VEN roberto
+chmod 777 /publico
+chmod 770 /adm
+chmod 770 /ven
+chmod 770 /sec
 
-useradd -m -s /bin/bash josefina
-usermod -a -G GRP_VEN josefina
+echo "Criação finalizada"
 
-useradd -m -s /bin/bash amanda
-usermod -a -G GRP_VEN amanda
 
-useradd -m -s /bin/bash rogerio
-usermod -a -G GRP_VEN rogerio
+
 
